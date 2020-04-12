@@ -1,0 +1,27 @@
+
+[2020-04-12 11:07:31] Traceback (most recent call last):
+  File "v8function_handler.pyx", line 48, in cefpython_py37.V8FunctionHandler_Execute
+  File "f:/Users/Sebastien/Documents/GitHub/CEFPython_tutorial/Py2JSBindings/main.py", line 28, in test
+    browser.ExecuteFunction("js_print", "Les bindings js sont bien définis")
+NameError: name 'browser' is not defined
+
+
+[2020-04-12 11:20:01] Traceback (most recent call last):
+  File "f:/Users/Sebastien/Documents/GitHub/CEFPython_tutorial/CEFApp/main.py", line 11, in <module>
+    CEFApp("file://"+os.path.join(S_CURRENT_DIR, "helloworld.html")).run()
+  File "f:\Users\Sebastien\Documents\GitHub\CEFPython_tutorial\CEFApp\cef_app.py", line 10, in __init__
+    self.set_javascript_bindings()
+  File "f:\Users\Sebastien\Documents\GitHub\CEFPython_tutorial\CEFApp\cef_app.py", line 13, in set_javascript_bindings
+    bindings.SetProperty("py_print", print)
+NameError: name 'bindings' is not defined
+
+
+[2020-04-12 11:20:16] Traceback (most recent call last):
+  File "f:/Users/Sebastien/Documents/GitHub/CEFPython_tutorial/CEFApp/main.py", line 11, in <module>
+    CEFApp("file://"+os.path.join(S_CURRENT_DIR, "helloworld.html")).run()
+  File "f:\Users\Sebastien\Documents\GitHub\CEFPython_tutorial\CEFApp\cef_app.py", line 10, in __init__
+    self.set_javascript_bindings()
+  File "f:\Users\Sebastien\Documents\GitHub\CEFPython_tutorial\CEFApp\cef_app.py", line 14, in set_javascript_bindings
+    self.browser.SetJavascriptBindings(bindings)
+NameError: name 'bindings' is not defined
+
