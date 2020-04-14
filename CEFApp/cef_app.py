@@ -17,7 +17,6 @@ class LoadHandler(object):
         parsed_url = urlparse(failed_url)
         root_path = parsed_url.netloc+parsed_url.path
         raw_query = parsed_url.query
-        print(parsed_url.query.split("="))
         query_data = dict([parsed_url.query.split("=")])
         if 'ERR_UNKNOWN_URL_SCHEME' in error_text_out and parsed_url.scheme == "jinja":
             try:
