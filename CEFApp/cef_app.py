@@ -17,7 +17,7 @@ class LoadHandler(object):
         parsed_url = urlparse(failed_url)
         root_path = parsed_url.netloc+parsed_url.path
         raw_query = parsed_url.query
-        query_data = dict([parsed_url.query.split("=")])
+        query_data = dict([param.split("=") for param in parsed_url.query.split("&")])
         if 'ERR_UNKNOWN_URL_SCHEME' in error_text_out and parsed_url.scheme == "jinja":
             try:
                 t = self.app.jinja_env.get_template(root_path)
@@ -37,6 +37,7 @@ class LoadHandler(object):
             return
         
     def OnLoadEnd(self, browser, frame, **_):
+        self.app.onNavigate()
         print("On load end")
 
     def OnLoadingStateChange(self, browser, is_loading, **_):
@@ -44,6 +45,7 @@ class LoadHandler(object):
         if not is_loading:
             # Loading is complete. DOM is ready.
             print("Loading is complete")
+
         else:
             print("DOM is loading")
 
@@ -92,6 +94,9 @@ class CEFApp:
 
         template_url = os.path.join(self.cef_temp_dir, "temp.html")
         return self.browser.LoadUrl(template_url, **kwargs)
+
+    def onNavigate(self):
+        pass
 
     def run(self):
         cef.MessageLoop()
